@@ -16,7 +16,7 @@ namespace ppedv.FlyingPluto.UI.DevConsole
 
             var core = new Core();
 
-            if (core.Repository.Query<Vermietung>().Count() == 0)
+            //if (core.Repository.Query<Vermietung>().Count() == 0)
                 core.CreateDemoData();
 
             foreach (var vm in core.Repository.Query<Vermietung>().OrderBy(x => x.Von).ToList())
