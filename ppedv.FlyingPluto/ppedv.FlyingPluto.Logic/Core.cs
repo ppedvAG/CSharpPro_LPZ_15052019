@@ -1,5 +1,4 @@
 ﻿using Bogus;
-using ppedv.FlyingPluto.Data.EF;
 using ppedv.FlyingPluto.Model;
 using ppedv.FlyingPluto.Model.Contracts;
 using System;

@@ -15,7 +15,7 @@ namespace ppedv.FlyingPluto.Data.EF
         public EfContext(string conStringOrName) : base(conStringOrName)
         { }
 
-        public EfContext() : this("Server=.;Database=FlyingPluto_dev;Trusted_Connection=true;")
+        public EfContext() : this("Server=.\\SQLEXPRESS;Database=FlyingPluto_dev;Trusted_Connection=true;")
         { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
