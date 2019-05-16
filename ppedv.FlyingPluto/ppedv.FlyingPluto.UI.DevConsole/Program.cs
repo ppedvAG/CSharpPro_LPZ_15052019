@@ -19,9 +19,11 @@ namespace ppedv.FlyingPluto.UI.DevConsole
             if (core.Repository.Query<Vermietung>().Count() == 0)
                 core.CreateDemoData();
 
-            foreach (var k in core.Repository.GetAll<Kunde>())
+            foreach (var vm in core.Repository.Query<Vermietung>().OrderBy(x => x.Von).ToList())
             {
-                Console.WriteLine($"{k.Name} {k.GebDatum:d}");
+                Console.WriteLine($"{vm.Kunde.Name}");
+                Console.WriteLine($"{vm.Von:d}-{vm.Bis:d} {vm.Auto.Marke} {vm.Auto.Modell} {vm.Auto.Kennzeichen}");
+                Console.WriteLine("--------------------------------------------------------------");
             }
 
             Console.WriteLine("Ende");

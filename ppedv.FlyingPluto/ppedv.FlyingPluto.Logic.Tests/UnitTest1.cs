@@ -9,9 +9,9 @@ namespace ppedv.FlyingPluto.Logic.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            var core = new Core();
+            var core = new Core(null);
 
-            Assert.Inconclusive();
+
         }
     }
 }
