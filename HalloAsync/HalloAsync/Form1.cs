@@ -89,7 +89,7 @@ namespace HalloAsync
         private async void MetroButton3_Click(object sender, EventArgs e)
         {
             string conString = "Server=.;Database=Northwind;Trusted_Connection=true";
-            using (var con = new SqlConnection(conString))
+            using (var con = new Microsoft.Data.SqlClient.SqlConnection(conString))
             {
                 await con.OpenAsync();
 
