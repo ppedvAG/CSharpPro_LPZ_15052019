@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\ppedv.FlyingPluto.UI.WinForms\Form1.cs" Link="Form1.cs" />
+    <Compile Include="..\ppedv.FlyingPluto.UI.WinForms\Form1.designer.cs" Link="Form1.designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.3.0-preview5-19254-05" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ppedv.FlyingPluto.Logic\ppedv.FlyingPluto.Logic.csproj" />
+    <ProjectReference Include="..\ppedv.FlyingPluto.Model\ppedv.FlyingPluto.Model.csproj" />
+  </ItemGroup>
+
+</Project>

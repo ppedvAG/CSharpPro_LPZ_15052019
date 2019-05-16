@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ppedv.FlyingPluto.Data.EF\ppedv.FlyingPluto.Data.EF.csproj" />
+    <ProjectReference Include="..\ppedv.FlyingPluto.Data.EF.NET\ppedv.FlyingPluto.Data.EF.NET.csproj" />
     <ProjectReference Include="..\ppedv.FlyingPluto.Model\ppedv.FlyingPluto.Model.csproj" />
   </ItemGroup>
 
