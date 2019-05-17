@@ -1,6 +1,5 @@
 ﻿using ppedv.FlyingPluto.Model;
 using ppedv.FlyingPluto.Model.Contracts;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,43 +49,6 @@ namespace ppedv.FlyingPluto.Data.EF
             {
                 context.Entry(loaded).CurrentValues.SetValues(entity);
             }
-        }
-    }
-
-
-    public class EfUnitOfWork : IUnitOfWork
-    {
-        EfContext context = new EfContext();
-
-        public IKundenRepository KundenRepo => new EfKundenRepository(context);
-
-        public IRepository<T> GetRepository<T>() where T : Entity
-        {
-            return new EfRepository<T>(context);
-        }
-
-        public void SaveAll()
-        {
-            context.SaveChanges();
-        }
-    }
-
-    public class EfKundenRepository : EfRepository<Kunde>, IKundenRepository
-    {
-        public EfKundenRepository(EfContext context) : base(context)
-        { }
-
-        public override void Add(Kunde entity)
-        {
-            base.Add(entity);
-            //todo besser Add
-        }
-
-        public IEnumerable<Kunde> GetBlaBlaKunden(int tage, DateTime datum)
-        {
-            //todo call StoredProc
-            //context.Database.ExecuteSqlCommand();
-            throw new NotImplementedException();
         }
     }
 }
