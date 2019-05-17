@@ -1,7 +1,9 @@
 ﻿using ppedv.FlyingPluto.Logic;
+using ppedv.FlyingPluto.Model.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -10,8 +12,15 @@ namespace ppedv.FlyingPluto.UI.Web.Controllers
 {
     public class KundenController : Controller
     {
-        Core core = new Core();
+        Core core;
+        public KundenController()
+        {
+            var ass = Assembly.LoadFile(@"C:\Users\ar2\source\repos\ppedvAG\CSharpPro_LPZ_15052019\ppedv.FlyingPluto\ppedv.FlyingPluto.Data.EFdotnet\bin\Debug\ppedv.FlyingPluto.Data.EFdotnet.dll");
 
+            var uow = ass.GetTypes().Where(x => x.GetInterfaces().Contains(typeof(IUnitOfWork))).FirstOrDefault();
+            core = new Core((IUnitOfWork)Activator.CreateInstance(uow));
+
+        }
         public async Task<ActionResult> Index()
         {
             return View(await core.UoW.KundenRepo.GetAllAsync());

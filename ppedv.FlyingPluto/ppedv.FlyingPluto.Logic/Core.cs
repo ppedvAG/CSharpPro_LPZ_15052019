@@ -1,4 +1,4 @@
-﻿using ppedv.FlyingPluto.Data.EF;
+﻿//using ppedv.FlyingPluto.Data.EF;
 using ppedv.FlyingPluto.Model;
 using ppedv.FlyingPluto.Model.Contracts;
 using System;
@@ -19,8 +19,8 @@ namespace ppedv.FlyingPluto.Logic
         {
             UoW = uow;
         }
-        public Core() : this(new Data.EF.EfUnitOfWork())
-        { }
+        //public Core() : this(new Data.EF.EfUnitOfWork())
+        //{ }
 
         public void CreateDemoData()
         {
