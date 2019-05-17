@@ -10,23 +10,17 @@ namespace ppedv.FlyingPluto.Logic
 {
     public class Core
     {
-        public IRepository Repository { get; private set; }
+        public IUnitOfWork UoW { get; private set; }
 
-        public Core(IRepository repo) //todo: DP Injection in here
+        public VermietungsService Vermietung { get => new VermietungsService(this); }
+        public KundenService Kunden { get => new KundenService(this); }
+
+        public Core(IUnitOfWork uow) //todo: DP Injection in here
         {
-            Repository = repo;
+            UoW = uow;
         }
-        public Core() : this(new Data.EF.EfRepository())
+        public Core() : this(new Data.EF.EfUnitOfWork())
         { }
-
-        public IEnumerable<Kunde> GetAllKundenDieSeitXXNichtMehrGebuchtHaben(int tage, DateTime now)
-        {
-            if (tage < 0)
-                throw new ArgumentException();
-
-            return Repository.Query<Kunde>().ToList().Where(x => x.Mietungen.Count() > 0 && (now - x.Mietungen.OrderBy(y => y.Bis).FirstOrDefault().Bis).TotalDays > tage);
-        }
-
 
         public void CreateDemoData()
         {
@@ -45,11 +39,11 @@ namespace ppedv.FlyingPluto.Logic
             var vm2 = new Vermietung() { AbholStandort = s1, ZielStandort = s1, Auto = a2, Kunde = k2, Km = 11, Von = DateTime.Now.AddDays(-95), Bis = DateTime.Now.AddDays(-87) };
             var vm3 = new Vermietung() { AbholStandort = s2, ZielStandort = s2, Auto = a3, Kunde = k3, Km = 74, Von = DateTime.Now.AddDays(-45), Bis = DateTime.Now.AddDays(-31) };
 
-            Repository.Add(vm1);
-            Repository.Add(vm2);
-            Repository.Add(vm3);
+            UoW.GetRepository<Vermietung>().Add(vm1);
+            UoW.GetRepository<Vermietung>().Add(vm2);
+            UoW.GetRepository<Vermietung>().Add(vm3);
 
-            Repository.SaveAll();
+            UoW.SaveAll();
 
         }
     }

@@ -16,17 +16,17 @@ namespace ppedv.FlyingPluto.UI.DevConsole
 
             var core = new Core();
 
-            if (core.Repository.Query<Vermietung>().Count() == 0)
+            if (core.UoW.GetRepository<Vermietung>().Query().Count() == 0)
                 core.CreateDemoData();
 
-            foreach (var vm in core.Repository.Query<Vermietung>().OrderBy(x => x.Von).ToList())
+            foreach (var vm in core.UoW.GetRepository<Vermietung>().Query().OrderBy(x => x.Von).ToList())
             {
                 Console.WriteLine($"{vm.Kunde.Name}");
                 Console.WriteLine($"{vm.Von:d}-{vm.Bis:d} {vm.Auto.Marke} {vm.Auto.Modell} {vm.Auto.Kennzeichen}");
                 Console.WriteLine("--------------------------------------------------------------");
             }
 
-            foreach (var k in core.GetAllKundenDieSeitXXNichtMehrGebuchtHaben(10, DateTime.Now))
+            foreach (var k in core.Kunden.GetAllKundenDieSeitXXNichtMehrGebuchtHaben(10, DateTime.Now))
             {
                 Console.WriteLine(k.Name);
             }

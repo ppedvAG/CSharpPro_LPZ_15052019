@@ -15,7 +15,7 @@ namespace ppedv.FlyingPluto.Logic.Tests
         {
             var core = new Core(null);
 
-            Assert.ThrowsException<ArgumentException>(() => core.GetAllKundenDieSeitXXNichtMehrGebuchtHaben(-1, DateTime.Now));
+            Assert.ThrowsException<ArgumentException>(() => core.Kunden.GetAllKundenDieSeitXXNichtMehrGebuchtHaben(-1, DateTime.Now));
 
         }
 
@@ -23,10 +23,14 @@ namespace ppedv.FlyingPluto.Logic.Tests
         [TestMethod]
         public void Core_GetAllKundenDieSeitXXNichtMehrGebuchtHaben()
         {
-            var mock = new Mock<IRepository>();
-            var core = new Core(mock.Object);
+            var repoMock = new Mock<IKundenRepository>();
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepository<Kunde>()).Returns(repoMock.Object);
+            uowMock.Setup(x => x.KundenRepo).Returns(repoMock.Object);
 
-            mock.Setup(x => x.Query<Kunde>()).Returns(() =>
+            var core = new Core(uowMock.Object);
+
+            repoMock.Setup(x => x.Query()).Returns(() =>
             {
                 var k1 = new Kunde() { Name = "K1" };
                 var k2 = new Kunde() { Name = "K2" };
@@ -39,7 +43,7 @@ namespace ppedv.FlyingPluto.Logic.Tests
                 return new[] { k1, k2 }.AsQueryable();
             });
 
-            var result = core.GetAllKundenDieSeitXXNichtMehrGebuchtHaben(100, DateTime.Now);
+            var result = core.Kunden.GetAllKundenDieSeitXXNichtMehrGebuchtHaben(100, DateTime.Now);
 
             Assert.AreEqual(1, result.Count());
             Assert.AreEqual("K2", result.First().Name);

@@ -7,50 +7,86 @@ using System.Text;
 
 namespace ppedv.FlyingPluto.Data.EF
 {
-    public class EfRepository : IRepository
+    public class EfRepository<T> : IRepository<T> where T : Entity
     {
-        EfContext context = new EfContext();
+        protected EfContext context;
+        public EfRepository(EfContext context)
+        {
+            this.context = context;
+        }
 
-        public void Add<T>(T entity) where T : Entity
+        public virtual void Add(T entity)
         {
             //    if (typeof(T) == typeof(Auto))
             //        context.Autos.Add(entity as Auto);
             context.Set<T>().Add(entity);
         }
 
-        public void Delete<T>(T entity) where T : Entity
+        public void Delete(T entity)
         {
             context.Set<T>().Remove(entity);
         }
 
-        public IEnumerable<T> GetAll<T>() where T : Entity
+        public IEnumerable<T> GetAll()
         {
             return context.Set<T>().ToList();
         }
 
-        public T GetById<T>(int id) where T : Entity
+        public T GetById(int id)
         {
             return context.Set<T>().Find(id);
-
         }
 
-        public IQueryable<T> Query<T>() where T : Entity
+        public IQueryable<T> Query()
         {
             return context.Set<T>();
+        }
+
+
+        public void Update(T entity)
+        {
+            var loaded = GetById(entity.Id);
+            if (loaded != null)
+            {
+                context.Entry(loaded).CurrentValues.SetValues(entity);
+            }
+        }
+    }
+
+
+    public class EfUnitOfWork : IUnitOfWork
+    {
+        EfContext context = new EfContext();
+
+        public IKundenRepository KundenRepo => new EfKundenRepository(context);
+
+        public IRepository<T> GetRepository<T>() where T : Entity
+        {
+            return new EfRepository<T>(context);
         }
 
         public void SaveAll()
         {
             context.SaveChanges();
         }
+    }
 
-        public void Update<T>(T entity) where T : Entity
+    public class EfKundenRepository : EfRepository<Kunde>, IKundenRepository
+    {
+        public EfKundenRepository(EfContext context) : base(context)
+        { }
+
+        public override void Add(Kunde entity)
         {
-            var loaded = GetById<T>(entity.Id);
-            if (loaded != null)
-            {
-                context.Entry(loaded).CurrentValues.SetValues(entity);
-            }
+            base.Add(entity);
+            //todo besser Add
+        }
+
+        public IEnumerable<Kunde> GetBlaBlaKunden(int tage, DateTime datum)
+        {
+            //todo call StoredProc
+            //context.Database.ExecuteSqlCommand();
+            throw new NotImplementedException();
         }
     }
 }
