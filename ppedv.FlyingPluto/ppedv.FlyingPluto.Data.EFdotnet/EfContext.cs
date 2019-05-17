@@ -2,6 +2,7 @@
 using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
 
 namespace ppedv.FlyingPluto.Data.EF
 {
@@ -29,11 +30,27 @@ namespace ppedv.FlyingPluto.Data.EF
             modelBuilder.Entity<Vermietung>().HasRequired(x => x.ZielStandort).WithMany(x => x.Ziel).WillCascadeOnDelete(false);
 
 
-            //modelBuilder.Types<Entity>().Configure(c =>
-            //{
-            //    c.Property(x => x.Modified).HasColumnType("datetime2").IsConcurrencyToken();
-            //    c.Property(x => x.Created).HasColumnType("datetime2");
-            //});
+            modelBuilder.Types<Entity>().Configure(c =>
+            {
+                c.Property(x => x.Modified).HasColumnType("datetime2").IsConcurrencyToken();
+                c.Property(x => x.Created).HasColumnType("datetime2");
+            });
+        }
+
+        public override int SaveChanges()
+        {
+            DateTime now = DateTime.Now;
+            foreach (var item in ChangeTracker.Entries<Entity>().Where(x => x.State == EntityState.Added))
+            {
+                item.Entity.Created = now;
+                item.Entity.Modified = now;
+            }
+            foreach (var item in ChangeTracker.Entries<Entity>().Where(x => x.State == EntityState.Modified))
+            {
+                item.Entity.Modified = now;
+            }
+
+            return base.SaveChanges();
         }
 
     }
