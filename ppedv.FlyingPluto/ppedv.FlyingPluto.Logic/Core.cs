@@ -2,6 +2,8 @@
 using ppedv.FlyingPluto.Model;
 using ppedv.FlyingPluto.Model.Contracts;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ppedv.FlyingPluto.Logic
@@ -16,6 +18,15 @@ namespace ppedv.FlyingPluto.Logic
         }
         public Core() : this(new Data.EF.EfRepository())
         { }
+
+        public IEnumerable<Kunde> GetAllKundenDieSeitXXNichtMehrGebuchtHaben(int tage, DateTime now)
+        {
+            if (tage < 0)
+                throw new ArgumentException();
+
+            return Repository.Query<Kunde>().ToList().Where(x => x.Mietungen.Count() > 0 && (now - x.Mietungen.OrderBy(y => y.Bis).FirstOrDefault().Bis).TotalDays > tage);
+        }
+
 
         public void CreateDemoData()
         {

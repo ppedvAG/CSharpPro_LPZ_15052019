@@ -26,6 +26,11 @@ namespace ppedv.FlyingPluto.UI.DevConsole
                 Console.WriteLine("--------------------------------------------------------------");
             }
 
+            foreach (var k in core.GetAllKundenDieSeitXXNichtMehrGebuchtHaben(10, DateTime.Now))
+            {
+                Console.WriteLine(k.Name);
+            }
+
             Console.WriteLine("Ende");
             Console.ReadLine();
         }
