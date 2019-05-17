@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.FlyingPluto.Model", "ppedv.FlyingPluto.Model\ppedv.FlyingPluto.Model.csproj", "{7070F0E6-6463-4B36-9856-9B4FE35C1408}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.FlyingPluto.Model", "ppedv.FlyingPluto.Model\ppedv.FlyingPluto.Model.csproj", "{7070F0E6-6463-4B36-9856-9B4FE35C1408}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.FlyingPluto.Data.EF", "ppedv.FlyingPluto.Data.EF\ppedv.FlyingPluto.Data.EF.csproj", "{1F7CC85B-10BF-49A6-B55C-A75E62050AD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.FlyingPluto.Data.EF", "ppedv.FlyingPluto.Data.EF\ppedv.FlyingPluto.Data.EF.csproj", "{1F7CC85B-10BF-49A6-B55C-A75E62050AD6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.FlyingPluto.Data.EF.Tests", "ppedv.FlyingPluto.Data.EF.Tests\ppedv.FlyingPluto.Data.EF.Tests.csproj", "{E278CF0C-5003-4F48-8263-090D5BB08B70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.FlyingPluto.Logic", "ppedv.FlyingPluto.Logic\ppedv.FlyingPluto.Logic.csproj", "{EC93C876-3520-436C-9772-FB6567CE6FCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.FlyingPluto.Logic", "ppedv.FlyingPluto.Logic\ppedv.FlyingPluto.Logic.csproj", "{EC93C876-3520-436C-9772-FB6567CE6FCD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.FlyingPluto.Logic.Tests", "ppedv.FlyingPluto.Logic.Tests\ppedv.FlyingPluto.Logic.Tests.csproj", "{BCEF7B92-8668-4081-B6B2-A17132277B31}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.FlyingPluto.UI.DevConsole", "ppedv.FlyingPluto.UI.DevConsole\ppedv.FlyingPluto.UI.DevConsole.csproj", "{1B625AD8-0F88-4AEA-BC8C-F8204FBA874A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.FlyingPluto.Data.EFdotnet", "ppedv.FlyingPluto.Data.EFdotnet\ppedv.FlyingPluto.Data.EFdotnet.csproj", "{2BE9B48D-E766-4A3E-804B-8A8EFE6D4B06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{1B625AD8-0F88-4AEA-BC8C-F8204FBA874A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B625AD8-0F88-4AEA-BC8C-F8204FBA874A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B625AD8-0F88-4AEA-BC8C-F8204FBA874A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE9B48D-E766-4A3E-804B-8A8EFE6D4B06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE9B48D-E766-4A3E-804B-8A8EFE6D4B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE9B48D-E766-4A3E-804B-8A8EFE6D4B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE9B48D-E766-4A3E-804B-8A8EFE6D4B06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

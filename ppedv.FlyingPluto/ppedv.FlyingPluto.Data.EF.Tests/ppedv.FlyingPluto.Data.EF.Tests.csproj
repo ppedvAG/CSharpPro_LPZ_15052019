@@ -64,9 +64,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ppedv.FlyingPluto.Data.EF\ppedv.FlyingPluto.Data.EF.csproj">
-      <Project>{1f7cc85b-10bf-49a6-b55c-a75e62050ad6}</Project>
-      <Name>ppedv.FlyingPluto.Data.EF</Name>
+    <ProjectReference Include="..\ppedv.FlyingPluto.Data.EFdotnet\ppedv.FlyingPluto.Data.EFdotnet.csproj">
+      <Project>{2be9b48d-e766-4a3e-804b-8a8efe6d4b06}</Project>
+      <Name>ppedv.FlyingPluto.Data.EFdotnet</Name>
     </ProjectReference>
     <ProjectReference Include="..\ppedv.FlyingPluto.Model\ppedv.FlyingPluto.Model.csproj">
       <Project>{7070f0e6-6463-4b36-9856-9b4fe35c1408}</Project>
