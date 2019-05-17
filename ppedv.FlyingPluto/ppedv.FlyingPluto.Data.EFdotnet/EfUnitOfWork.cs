@@ -1,4 +1,5 @@
-﻿using ppedv.FlyingPluto.Model;
+﻿using System.Threading.Tasks;
+using ppedv.FlyingPluto.Model;
 using ppedv.FlyingPluto.Model.Contracts;
 
 namespace ppedv.FlyingPluto.Data.EF
@@ -17,6 +18,11 @@ namespace ppedv.FlyingPluto.Data.EF
         public void SaveAll()
         {
             context.SaveChanges();
+        }
+
+        public Task SaveAllAsync()
+        {
+            return context.SaveChangesAsync();
         }
     }
 }

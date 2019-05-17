@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.FlyingPluto.UI.DevCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.FlyingPluto.Data.EFdotnet", "ppedv.FlyingPluto.Data.EFdotnet\ppedv.FlyingPluto.Data.EFdotnet.csproj", "{2BE9B48D-E766-4A3E-804B-8A8EFE6D4B06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.FlyingPluto.UI.Web", "ppedv.FlyingPluto.UI.Web\ppedv.FlyingPluto.UI.Web.csproj", "{5486EB7F-A459-482C-80A0-D9EBB89188A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{2BE9B48D-E766-4A3E-804B-8A8EFE6D4B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BE9B48D-E766-4A3E-804B-8A8EFE6D4B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BE9B48D-E766-4A3E-804B-8A8EFE6D4B06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5486EB7F-A459-482C-80A0-D9EBB89188A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5486EB7F-A459-482C-80A0-D9EBB89188A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5486EB7F-A459-482C-80A0-D9EBB89188A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5486EB7F-A459-482C-80A0-D9EBB89188A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

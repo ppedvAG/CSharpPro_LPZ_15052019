@@ -40,6 +40,7 @@ namespace ppedv.FlyingPluto.Data.EF
         public override int SaveChanges()
         {
             DateTime now = DateTime.Now;
+
             foreach (var item in ChangeTracker.Entries<Entity>().Where(x => x.State == EntityState.Added))
             {
                 item.Entity.Created = now;

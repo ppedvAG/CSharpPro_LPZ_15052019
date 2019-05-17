@@ -1,8 +1,10 @@
 ﻿using ppedv.FlyingPluto.Model;
 using ppedv.FlyingPluto.Model.Contracts;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ppedv.FlyingPluto.Data.EF
 {
@@ -21,6 +23,11 @@ namespace ppedv.FlyingPluto.Data.EF
             context.Set<T>().Add(entity);
         }
 
+        public Task AddAsync(T entity)
+        {
+            return Task.Run(() => Add(entity));
+        }
+
         public void Delete(T entity)
         {
             context.Set<T>().Remove(entity);
@@ -31,9 +38,20 @@ namespace ppedv.FlyingPluto.Data.EF
             return context.Set<T>().ToList();
         }
 
+        public Task<List<T>> GetAllAsync()
+        {
+            return context.Set<T>().ToListAsync();
+        }
+
         public T GetById(int id)
         {
             return context.Set<T>().Find(id);
+        }
+
+        public Task<T> GetByIdAsync(int id)
+        {
+            return context.Set<T>().FindAsync(id);
+
         }
 
         public IQueryable<T> Query()

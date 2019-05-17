@@ -10,13 +10,13 @@ namespace ppedv.FlyingPluto.UI.DevConsole
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("*** FlyingPluto v0.1 GOLD Edition ***");
 
             var core = new Core();
 
-            if (core.UoW.GetRepository<Vermietung>().Query().Count() == 0)
+            if (await Task.Run(()=> core.UoW.GetRepository<Vermietung>().Query().Count() != 0))
                 core.CreateDemoData();
 
             foreach (var vm in core.UoW.GetRepository<Vermietung>().Query().OrderBy(x => x.Von).ToList())

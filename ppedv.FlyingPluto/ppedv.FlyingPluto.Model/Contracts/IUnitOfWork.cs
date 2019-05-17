@@ -1,4 +1,6 @@
-﻿namespace ppedv.FlyingPluto.Model.Contracts
+﻿using System.Threading.Tasks;
+
+namespace ppedv.FlyingPluto.Model.Contracts
 {
     public interface IUnitOfWork
     {
@@ -7,6 +9,7 @@
 
 
         void SaveAll();
+        Task SaveAllAsync();
     }
 
 }
